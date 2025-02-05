@@ -4,7 +4,7 @@ import torch.nn as nn
 from timm.models.layers import trunc_normal_, DropPath
 from mamba_ssm import Mamba
 from torch.nn import functional as F
-from ...tools.wavelet_module import LearnableWaveletTransform
+# from ...tools.wavelet_module import LearnableWaveletTransform
 
 class ChannelAttention3D(nn.Module):
     def __init__(self, in_channels, reduction):
