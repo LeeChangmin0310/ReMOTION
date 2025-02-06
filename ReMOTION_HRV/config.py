@@ -290,7 +290,11 @@ _C.MODEL.NAME = ''
 _C.MODEL.RESUME = ''
 # Dropout rate
 _C.MODEL.DROP_RATE = 0.0
-_C.MODEL.MODEL_DIR = 'PreTrainedModels'
+
+# _C.MODEL.MODEL_DIR = 'PreTrainedModels'
+_C.MODEL.MODEL_DIR = os.path.join("/home/changmin/pth", _C.MODEL.NAME)
+if not os.path.exists(_C.MODEL.MODEL_DIR):
+    os.makedirs(_C.MODEL.MODEL_DIR)
 
 # Specific parameters for physnet parameters
 _C.MODEL.PHYSNET = CN()
@@ -353,7 +357,11 @@ _C.NUM_OF_GPU_TRAIN = 1
 # Log settings
 # -----------------------------------------------------------------------------
 _C.LOG = CN()
-_C.LOG.PATH = "runs/exp"
+_C.LOG.PATH = "/home/changmin/log"
+_C.LOG.EXPERIMENT_DIR = os.path.join(_C.LOG.PATH, _C.TRAIN.MODEL_FILE_NAME)
+if not os.path.exists(_C.LOG.EXPERIMENT_DIR):
+    os.makedirs(_C.LOG.EXPERIMENT_DIR)
+
 
 
 def _update_config_from_file(config, cfg_file):
