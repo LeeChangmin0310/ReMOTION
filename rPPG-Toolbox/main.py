@@ -1,4 +1,5 @@
 """ The main function of rPPG deep learning pipeline."""
+# python main.py --config_file ./configs/train_configs/UBFC-rPPG_UBFC-rPPG_UBFC-rPPG_PHYSMAMBA.yaml
 
 import argparse
 import random
