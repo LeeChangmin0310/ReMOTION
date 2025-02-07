@@ -361,7 +361,7 @@ _C.LOG.PATH = "/home/changmin/log"
 _C.LOG.EXPERIMENT_DIR = os.path.join(_C.LOG.PATH, _C.TRAIN.MODEL_FILE_NAME)
 if not os.path.exists(_C.LOG.EXPERIMENT_DIR):
     os.makedirs(_C.LOG.EXPERIMENT_DIR)
-
+_C.LOG.SAVE_PLOTS = True
 
 
 def _update_config_from_file(config, cfg_file):
