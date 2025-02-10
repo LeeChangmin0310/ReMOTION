@@ -21,7 +21,7 @@ _C.TRAIN = CN()
 _C.TRAIN.EPOCHS = 50
 
 ##################################### OOM #####################################
-_C.TRAIN.BATCH_SIZE = 2
+_C.TRAIN.BATCH_SIZE = 1
 ###############################################################################
 
 _C.TRAIN.LR = 1e-4
@@ -344,7 +344,9 @@ _C.MODEL.PHYSFORMER.THETA = 0.7
 # Inference settings
 # -----------------------------------------------------------------------------
 _C.INFERENCE = CN()
+##################################### OOM #####################################
 _C.INFERENCE.BATCH_SIZE = 4
+###############################################################################
 _C.INFERENCE.EVALUATION_METHOD = 'FFT'
 _C.INFERENCE.EVALUATION_WINDOW = CN()
 _C.INFERENCE.EVALUATION_WINDOW.USE_SMALLER_WINDOW = False
