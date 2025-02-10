@@ -92,7 +92,34 @@ class UBFCrPPGLoader(BaseLoader):
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
         input_name_list, label_name_list = self.save_multi_process(frames_clips, bvps_clips, saved_filename)
         file_list_dict[i] = input_name_list
+    @staticmethod
+    def read_video(video_file):
+        """Reads a video file, returns frames(T, H, W, 3)"""
+        
+        if not os.path.exists(video_file):
+            raise FileNotFoundError(f"Video file not found: {video_file}")
 
+        VidObj = cv2.VideoCapture(video_file)
+        
+        if not VidObj.isOpened():
+            raise ValueError(f"Could not open video file: {video_file}")
+
+        frames = []
+        while True:
+            success, frame = VidObj.read()
+            if not success:
+                break
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frames.append(frame)
+
+        VidObj.release()
+
+        if len(frames) == 0:
+            raise ValueError(f"No frames extracted from video: {video_file}")
+
+        return np.asarray(frames)
+
+    '''
     @staticmethod
     def read_video(video_file):
         """Reads a video file, returns frames(T, H, W, 3) """
@@ -106,7 +133,7 @@ class UBFCrPPGLoader(BaseLoader):
             frames.append(frame)
             success, frame = VidObj.read()
         return np.asarray(frames)
-
+    '''
     @staticmethod
     def read_wave(bvp_file):
         """Reads a bvp signal file."""

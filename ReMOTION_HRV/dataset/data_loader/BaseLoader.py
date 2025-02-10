@@ -362,6 +362,10 @@ class BaseLoader(Dataset):
         Returns:
             resized_frames(list[np.array(float)]): Resized and cropped frames
         """
+        if frames.shape[0] == 0:  # is frame empty?
+            print("⚠️ Warning: No frames available for face cropping. Skipping...")
+            return np.array([])
+        
         # Face Cropping
         if use_dynamic_detection:
             num_dynamic_det = ceil(frames.shape[0] / detection_freq)
@@ -426,7 +430,7 @@ class BaseLoader(Dataset):
         """
 
         if not os.path.exists(self.cached_path):
-            os.makedirs(self.cached_path, exist_ok=True)
+            os.makedirs(self.cached_path, exist_ok=True, mode=0o777)
         count = 0
         for i in range(len(bvps_clips)):
             assert (len(self.inputs) == len(self.labels))
@@ -451,7 +455,7 @@ class BaseLoader(Dataset):
             label_path_name_list: list of label path names
         """
         if not os.path.exists(self.cached_path):
-            os.makedirs(self.cached_path, exist_ok=True)
+            os.makedirs(self.cached_path, exist_ok=True, mode=0o777)
         count = 0
         input_path_name_list = []
         label_path_name_list = []
@@ -531,7 +535,7 @@ class BaseLoader(Dataset):
             raise ValueError(self.dataset_name, 'No files in file list')
 
         file_list_df = pd.DataFrame(file_list, columns=['input_files'])
-        os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True, mode=0o777)
         file_list_df.to_csv(self.file_list_path)  # save file list to .csv
 
     def build_file_list_retroactive(self, data_dirs, begin, end):
@@ -567,7 +571,7 @@ class BaseLoader(Dataset):
                              'File list empty. Check preprocessed data folder exists and is not empty.')
 
         file_list_df = pd.DataFrame(file_list, columns=['input_files'])
-        os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True)
+        os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True,mode=0o777)
         file_list_df.to_csv(self.file_list_path)  # save file list to .csv
 
     def load_preprocessed_data(self):

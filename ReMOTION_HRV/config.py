@@ -294,7 +294,7 @@ _C.MODEL.DROP_RATE = 0.0
 # _C.MODEL.MODEL_DIR = 'PreTrainedModels'
 _C.MODEL.MODEL_DIR = os.path.join("/home/changmin/pth", _C.MODEL.NAME)
 if not os.path.exists(_C.MODEL.MODEL_DIR):
-    os.makedirs(_C.MODEL.MODEL_DIR)
+    os.makedirs(_C.MODEL.MODEL_DIR, mode=0o777)
 
 # Specific parameters for physnet parameters
 _C.MODEL.PHYSNET = CN()
@@ -360,7 +360,7 @@ _C.LOG = CN()
 _C.LOG.PATH = "/home/changmin/log"
 _C.LOG.EXPERIMENT_DIR = os.path.join(_C.LOG.PATH, _C.TRAIN.MODEL_FILE_NAME)
 if not os.path.exists(_C.LOG.EXPERIMENT_DIR):
-    os.makedirs(_C.LOG.EXPERIMENT_DIR)
+    os.makedirs(_C.LOG.EXPERIMENT_DIR, mode=0o777)
 _C.LOG.SAVE_PLOTS = True
 
 

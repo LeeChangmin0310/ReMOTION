@@ -293,7 +293,7 @@ class PhysMambaTrainer(BaseTrainer):
 
     def save_model(self, epoch):
         """Saves the model state."""
-        os.makedirs(self.model_dir, exist_ok=True)
+        os.makedirs(self.model_dir, exist_ok=True, mode=0o777)
         model_path = os.path.join(self.model_dir, f"{self.model_file_name}_Epoch{epoch}.pth")
         torch.save(self.model.state_dict(), model_path)
         self.logger.info(f"Saved Model: {model_path}")
