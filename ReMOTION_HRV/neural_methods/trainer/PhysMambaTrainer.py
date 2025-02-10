@@ -39,6 +39,8 @@ class PhysMambaTrainer(BaseTrainer):
             self.diff_flag = 1
         self.frame_rate = config.TRAIN.DATA.FS
         
+        self.log_dir = config.LOG.EXPERIMENT_DIR
+        os.makedirs(self.log_dir, exist_ok=True, mode=0o777)
         ## LOGGING ##
         log_file = os.path.join(self.log_dir, f"{self.model_file_name}.log")
         logging.basicConfig(
@@ -117,7 +119,10 @@ class PhysMambaTrainer(BaseTrainer):
                 if idx % 100 == 99:
                     self.logger.info(f"[{epoch}, {idx + 1}] loss: {running_loss / 100:.3f}")
                     running_loss = 0.0
-
+            ############## OOM ##############
+                    torch.cuda.empty_cache()
+            torch.cuda.empty_cache()
+            #################################
             self.save_model(epoch)
             
             if not self.config.TEST.USE_LAST_EPOCH:

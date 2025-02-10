@@ -81,7 +81,7 @@ class MambaLayer(nn.Module):
                 d_state=d_state,  # SSM state expansion factor
                 d_conv=d_conv,    # Local convolution width
                 expand=expand,    # Block expansion factor
-                bimamba=True,
+                # bimamba=True,
         )
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.apply(self._init_weights)
@@ -132,7 +132,7 @@ def conv_block(in_channels, out_channels, kernel_size, stride, padding, bn=True,
 
 
 class PhysMamba(nn.Module):
-    def __init__(self, theta=0.5, drop_rate1=0.25, drop_rate2=0.5, frames=128, prv_mode=True):
+    def __init__(self, theta=0.5, drop_rate1=0.25, drop_rate2=0.5, frames=128):
         super(PhysMamba, self).__init__()
 
         self.ConvBlock1 = conv_block(3, 16, [1, 5, 5], stride=1, padding=[0, 2, 2])  
@@ -182,14 +182,14 @@ class PhysMamba(nn.Module):
 
         self.poolspa = nn.AdaptiveAvgPool3d((frames, 1, 1))
 
-        #### PRV MODE ####
+        '''#### PRV MODE ####
         if self.prv_mode:
             self.wavelet_transform = LearnableWaveletTransform(levels=4)
             self.prv_regressor = nn.Sequential(
                 nn.Linear(128, 32),
                 nn.ReLU(),
                 nn.Linear(32, 1)
-            )
+            )'''
 
 
     def _build_block(self, channels, theta):
@@ -254,12 +254,12 @@ class PhysMamba(nn.Module):
 
         rPPG = x_final.view(-1, length)
         
-        #### PRV MODE ####
+        '''#### PRV MODE ####
         if self.prv_mode:
             wavelet_coeffs = self.wavelet_transform(rPPG)
             prv_features = torch.stack([coeff[-1].mean() for coeff in wavelet_coeffs])
             prv = self.prv_regressor(prv_features.unsqueeze(-1))
-            return rPPG, prv.squeeze()
+            return rPPG, prv.squeeze()'''
         
         return rPPG  
         

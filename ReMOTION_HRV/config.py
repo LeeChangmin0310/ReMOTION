@@ -19,7 +19,11 @@ _C.BASE = ['']
 _C.TOOLBOX_MODE = ""
 _C.TRAIN = CN()
 _C.TRAIN.EPOCHS = 50
-_C.TRAIN.BATCH_SIZE = 4
+
+##################################### OOM #####################################
+_C.TRAIN.BATCH_SIZE = 2
+###############################################################################
+
 _C.TRAIN.LR = 1e-4
 # Optimizer
 _C.TRAIN.OPTIMIZER = CN()

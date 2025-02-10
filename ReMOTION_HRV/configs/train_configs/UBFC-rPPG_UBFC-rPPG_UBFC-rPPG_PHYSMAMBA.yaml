@@ -9,7 +9,7 @@ TRAIN:
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
-    DO_PREPROCESS: True            # if first time, should be true
+    DO_PREPROCESS: False      # if first time, should be true
     DATA_FORMAT: NCDHW
     DATA_PATH: "/home/changmin/data/UBFC-rPPG/DATASET_2"                     # Raw dataset path, need to be updated
     CACHED_PATH: "/home/changmin/data/UBFC-rPPG/PreprocessedData"    # Processed dataset save path, need to be updated
@@ -71,7 +71,7 @@ TEST:
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
-    DO_PREPROCESS: True               # if first time, should be true
+    DO_PREPROCESS: False               # if first time, should be true
     DATA_FORMAT: NCDHW
     DATA_PATH: "/home/changmin/data/UBFC-rPPG/DATASET_2"                     # Raw dataset path, need to be updated
     CACHED_PATH: "/home/changmin/data/UBFC-rPPG/PreprocessedData"    # Processed dataset save path, need to be updated
