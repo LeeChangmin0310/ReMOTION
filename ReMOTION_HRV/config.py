@@ -345,7 +345,7 @@ _C.MODEL.PHYSFORMER.THETA = 0.7
 # -----------------------------------------------------------------------------
 _C.INFERENCE = CN()
 ##################################### OOM #####################################
-_C.INFERENCE.BATCH_SIZE = 4
+_C.INFERENCE.BATCH_SIZE = 1
 ###############################################################################
 _C.INFERENCE.EVALUATION_METHOD = 'FFT'
 _C.INFERENCE.EVALUATION_WINDOW = CN()
