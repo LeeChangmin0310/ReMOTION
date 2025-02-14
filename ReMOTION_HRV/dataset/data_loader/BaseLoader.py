@@ -516,7 +516,48 @@ class BaseLoader(Dataset):
         pbar.close()
 
         return file_list_dict
+    def build_file_list(self, file_list_dict):
+        """
+        Build a list of files used by the dataloader for the data split (e.g., train/val/test).
+        Also saves the file list as a CSV file to self.file_list_path.
+        
+        Args:
+            file_list_dict (dict): Dictionary containing processed file path information.
+                - When PR_MODE is True, each entry is expected to be a dictionary with a key "input"
+                containing a list of file paths.
+                - When PR_MODE is False, each entry is expected to be a list of file paths.
+        
+        Raises:
+            ValueError: If no files are found in the file list.
+        
+        Returns:
+            None
+        """
+        file_list = []
+        
+        if self.config_data.PR_MODE:
+            # For PR_MODE=True, iterate through each process's result (a dict) and extend file_list
+            for process_num, entry in file_list_dict.items():
+                if isinstance(entry, dict) and "input" in entry:
+                    file_list.extend(entry["input"])
+                elif isinstance(entry, list):
+                    file_list.extend(entry)
+                else:
+                    raise ValueError("Unexpected format in file_list_dict for process {}: {}".format(process_num, entry))
+        else:
+            # For PR_MODE=False, each entry is expected to be a list of file paths
+            for process_num, file_paths in file_list_dict.items():
+                file_list.extend(file_paths)
+        
+        if not file_list:
+            raise ValueError(self.dataset_name, 'No files in file list')
+        
+        # Save the file list as a CSV file
+        file_list_df = pd.DataFrame(file_list, columns=['input_files'])
+        os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True, mode=0o777)
+        file_list_df.to_csv(self.file_list_path, index=False)
 
+    '''
     def build_file_list(self, file_list_dict):
         """Build a list of files used by the dataloader for the data split. Eg. list of files used for 
         train / val / test. Also saves the list to a .csv file.
@@ -537,7 +578,7 @@ class BaseLoader(Dataset):
         file_list_df = pd.DataFrame(file_list, columns=['input_files'])
         os.makedirs(os.path.dirname(self.file_list_path), exist_ok=True, mode=0o777)
         file_list_df.to_csv(self.file_list_path)  # save file list to .csv
-
+    '''
     def build_file_list_retroactive(self, data_dirs, begin, end):
         """ If a file list has not already been generated for a specific data split build a list of files 
         used by the dataloader for the data split. Eg. list of files used for 

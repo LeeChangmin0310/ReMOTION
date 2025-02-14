@@ -50,6 +50,7 @@ VALID:
     EXP_DATA_NAME: ""
     BEGIN: 0.8
     END: 1.0
+    PR_MODE: True
     PREPROCESS:
       DATA_TYPE: ['DiffNormalized'] #if use physnet, should be DiffNormalized
       DATA_AUG: ['None']    # 'None' or 'Motion' is supported, used if the data path points to an augmented dataset or requires augmentation
@@ -82,6 +83,7 @@ TEST:
     EXP_DATA_NAME: ""
     BEGIN: 0.8
     END: 1.0
+    PR_MODE: True
     PREPROCESS:
       DATA_TYPE: ['DiffNormalized'] #if use physnet, should be DiffNormalized
       LABEL_TYPE: DiffNormalized
