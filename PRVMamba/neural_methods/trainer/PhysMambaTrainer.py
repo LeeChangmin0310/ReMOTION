@@ -126,6 +126,8 @@ class PhysMambaTrainer(BaseTrainer):
                 self.optimizer.zero_grad()
                 # Forward pass: if PR_MODE is enabled, take the first element as the rPPG signal.
                 pred_ppg = self.model(data)[0] if self.prv_mode else self.model(data)
+                if pred_ppg.ndim == 1:
+                  pred_ppg = pred_ppg.unsqueeze(0)
                 # Normalize signals for Pearson loss.
                 pred_ppg_norm = self.normalize_signal(pred_ppg)
                 labels_norm = self.normalize_signal(labels)

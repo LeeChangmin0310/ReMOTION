@@ -236,8 +236,14 @@ import torch
 import torch.nn as nn
 from timm.models.layers import trunc_normal_, DropPath
 from mamba_ssm import Mamba
+import inspect
+print(inspect.signature(Mamba.__init__))
+help(Mamba)
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../tools/mamba/mamba_ssm/modules'))
+# from mamba_simple import Mamba 
 from torch.nn import functional as F
-# from ...tools.wavelet_module import LearnableWaveletTransform
 
 class ChannelAttention3D(nn.Module):
     def __init__(self, in_channels, reduction):
@@ -314,8 +320,9 @@ class MambaLayer(nn.Module):
                 d_state=d_state,  # SSM state expansion factor
                 d_conv=d_conv,    # Local convolution width
                 expand=expand,    # Block expansion factor
-                bimamba=True,
+                bimamba=True       
         )
+        # self.mamba.bimamba = True
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.apply(self._init_weights)
 
