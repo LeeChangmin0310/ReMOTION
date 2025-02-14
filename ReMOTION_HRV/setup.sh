@@ -18,7 +18,9 @@ conda_setup() {
     pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 --index-url https://download.pytorch.org/whl/cu121
     pip install -r requirements.txt || exit 1
     cd tools/mamba || exit 1
-    python setup.py install || exit 1
+    # python -m pip install -e . || exit 1
+    pip install . || exit 1
+    # python setup.py install || exit 1
 }
 
 # Function to set up using uv

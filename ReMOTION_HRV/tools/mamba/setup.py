@@ -272,5 +272,6 @@ setup(
         "triton",
         "transformers",
         "causal_conv1d",
+        # "tokenizers>=0.21.0",
     ],
 )
