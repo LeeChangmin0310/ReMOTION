@@ -20,7 +20,7 @@ _C.TOOLBOX_MODE = ""
 _C.TRAIN = CN()
 _C.TRAIN.EPOCHS = 50
 ####### PR_MODE #######
-_C.TRAIN.PR_MODE = True
+# _C.TRAIN.PR_MODE = True
 #######################
 _C.TRAIN.PR_LOSS_WEIGHT = 0.5
 ##################################### OOM #####################################
@@ -41,10 +41,6 @@ _C.TRAIN.PLOT_LOSSES_AND_LR = True
 
 # Train.Data settings
 _C.TRAIN.DATA = CN()
-######### PR_MODE #########
-_C.TRAIN.DATA.PR_MODE = True
-###########################
-
 _C.TRAIN.DATA.INFO = CN()
 _C.TRAIN.DATA.INFO.LIGHT = ['']
 _C.TRAIN.DATA.INFO.MOTION = ['']
@@ -60,6 +56,9 @@ _C.TRAIN.DATA.FILTERING.EXCLUSION_LIST = ['']
 _C.TRAIN.DATA.FILTERING.SELECT_TASKS = False
 _C.TRAIN.DATA.FILTERING.TASK_LIST = ['']
 _C.TRAIN.DATA.FS = 0
+######### PR_MODE #########
+_C.TRAIN.DATA.PR_MODE = False
+###########################
 _C.TRAIN.DATA.DATA_PATH = ''
 _C.TRAIN.DATA.EXP_DATA_NAME = ''
 _C.TRAIN.DATA.CACHED_PATH = 'PreprocessedData'

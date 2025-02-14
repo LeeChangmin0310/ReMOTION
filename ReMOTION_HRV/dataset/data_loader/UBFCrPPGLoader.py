@@ -72,7 +72,6 @@ class UBFCrPPGLoader(BaseLoader):
     """
     def __init__(self, name, data_path, config_data):
         super().__init__(name, data_path, config_data)
-        self.pr_mode = getattr(config_data.TRAIN, "PR_MODE", False)
 
     def get_raw_data(self, data_path):
         data_dirs = glob.glob(os.path.join(data_path, "subject*"))
@@ -111,7 +110,7 @@ class UBFCrPPGLoader(BaseLoader):
         input_name_list, label_name_list = self.save_multi_process(frames_clips, bvps_clips, saved_filename)
 
         # config.TRAIN.PR_MODE=True -> calculate and save PRV Mectric
-        if self.pr_mode:
+        if self.config_data.PR_MODE:
             sdnn, rmssd, lf, hf = calculate_prv_metrics(bvps, fs=self.config_data.FS)
             prv_metrics = np.array([sdnn, rmssd, lf, hf])
             print(f"PRV Metrics for subject {saved_filename}: SDNN={sdnn}, RMSSD={rmssd}, LF={lf}, HF={hf}")

@@ -1,7 +1,7 @@
 BASE: ['']
 TOOLBOX_MODE: "train_and_test" # "train_and_test"  or "only_test"
 TRAIN:
-  PR_MODE: True
+  # PR_MODE: True
   PR_LOSS_WEIGHT: 0.5
   BATCH_SIZE: 4
   EPOCHS: 50
@@ -9,7 +9,6 @@ TRAIN:
   MODEL_FILE_NAME: UBFC_UBFC_UBFC_PhysMamba
   PLOT_LOSSES_AND_LR: True
   DATA:
-    PR_MODE: True
     FS: 30
     DATASET: UBFC-rPPG
     DO_PREPROCESS: True      # if first time, should be true
@@ -20,6 +19,7 @@ TRAIN:
     EXP_DATA_NAME: ""
     BEGIN: 0.0
     END: 0.8
+    PR_MODE: True
     PREPROCESS:
       DATA_TYPE: ['DiffNormalized'] #if use physnet, should be DiffNormalized
       DATA_AUG: ['None']    # 'None' or 'Motion' is supported, used if the data path points to an augmented dataset or requires augmentation

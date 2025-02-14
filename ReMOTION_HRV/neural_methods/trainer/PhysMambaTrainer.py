@@ -33,7 +33,7 @@ class PhysMambaTrainer(BaseTrainer):
         self.frame_rate = config.TRAIN.DATA.FS
 
         # Store the PR_MODE flag as an instance variable.
-        self.prv_mode = getattr(config.TRAIN, "PR_MODE", False)
+        self.prv_mode = getattr(config.TRAIN.DATA, "PR_MODE", False)
 
         # Setup logging.
         os.makedirs(config.LOG.EXPERIMENT_DIR, exist_ok=True)
