@@ -109,7 +109,7 @@ class UBFCrPPGLoader(BaseLoader):
         # preprocess
         frames_clips, bvps_clips = self.preprocess(frames, bvps, config_preprocess)
         input_name_list, label_name_list = self.save_multi_process(frames_clips, bvps_clips, saved_filename)
-        
+
         # config.TRAIN.PR_MODE=True -> calculate and save PRV Mectric
         if self.pr_mode:
             sdnn, rmssd, lf, hf = calculate_prv_metrics(bvps, fs=self.config_data.FS)

@@ -19,7 +19,9 @@ _C.BASE = ['']
 _C.TOOLBOX_MODE = ""
 _C.TRAIN = CN()
 _C.TRAIN.EPOCHS = 50
+####### PR_MODE #######
 _C.TRAIN.PR_MODE = True
+#######################
 _C.TRAIN.PR_LOSS_WEIGHT = 0.5
 ##################################### OOM #####################################
 _C.TRAIN.BATCH_SIZE = 4
@@ -36,8 +38,13 @@ _C.TRAIN.OPTIMIZER.BETAS = (0.9, 0.999)
 _C.TRAIN.OPTIMIZER.MOMENTUM = 0.9
 _C.TRAIN.MODEL_FILE_NAME = ''
 _C.TRAIN.PLOT_LOSSES_AND_LR = True
+
 # Train.Data settings
 _C.TRAIN.DATA = CN()
+######### PR_MODE #########
+_C.TRAIN.DATA.PR_MODE = True
+###########################
+
 _C.TRAIN.DATA.INFO = CN()
 _C.TRAIN.DATA.INFO.LIGHT = ['']
 _C.TRAIN.DATA.INFO.MOTION = ['']

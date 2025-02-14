@@ -9,6 +9,7 @@ TRAIN:
   MODEL_FILE_NAME: UBFC_UBFC_UBFC_PhysMamba
   PLOT_LOSSES_AND_LR: True
   DATA:
+    PR_MODE: True
     FS: 30
     DATASET: UBFC-rPPG
     DO_PREPROCESS: True      # if first time, should be true
