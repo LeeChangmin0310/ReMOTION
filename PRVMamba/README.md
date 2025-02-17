@@ -12,8 +12,44 @@ Code is based on **[rPPG-Toolbox](https://github.com/ubicomplab/rPPG-Toolbox)**
 - **Environment**
 
 ```bash
-conda create -n PhysMamba python=3.8
+conda create -n PRVMamba python=3.8
 pip install torch==2.0.0 torchvision==0.15.1 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+```
+
+- **CUDA Toolkit 11.8 (Must be installed on /usr/local/)**
+
+```bash
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+mkdir -p $CONDA_PREFIX/etc/conda/deactivate.d
+
+vi $CONDA_PREFIX/etc/conda/activate.d/set_cuda11.sh
+
+# ------------------------------------------------------ #
+#!/bin/bash
+# Original CUDA Backup
+export OLD_CUDA_HOME=$CUDA_HOME
+export OLD_PATH=$PATH
+export OLD_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
+
+# CUDA 11.8 PATH
+export CUDA_HOME=/usr/local/cuda-11.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+# ------------------------------------------------------ #
+chmod +x $CONDA_PREFIX/etc/conda/activate.d/set_cuda11.sh
+
+vi $CONDA_PREFIX/etc/conda/deactivate.d/unset_cuda11.sh
+# ------------------------------------------------------ #
+#!/bin/bash
+export CUDA_HOME=$OLD_CUDA_HOME
+export PATH=$OLD_PATH
+export LD_LIBRARY_PATH=$OLD_LD_LIBRARY_PATH
+
+unset OLD_CUDA_HOME
+unset OLD_PATH
+unset OLD_LD_LIBRARY_PATH
+# ------------------------------------------------------ #
+chmod +x $CONDA_PREFIX/etc/conda/deactivate.d/unset_cuda11.sh
 ```
 
 - **Install packages**
@@ -25,15 +61,13 @@ pip install -r requirements.txt
 - **Install causal-conv1d**
 
 ```bash
-cd causal-conv1d
-python setup.py install
+pip install -e ./causal-conv1d
 ```
 
 - **Install Mamba**
 
 ```bash
-cd mamba
-python setup.py install
+pip install -e ./mamba
 ```
 
 # Datasets

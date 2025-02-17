@@ -1,0 +1,6 @@
+# ninja log v5
+1	2480	1739768984287978298	/home/changmin/ReMOTION/PRVMamba/causal-conv1d/build/temp.linux-x86_64-cpython-38/csrc/causal_conv1d_update.o	81dabeef880798b3
+1	6252	1739768988055955624	/home/changmin/ReMOTION/PRVMamba/causal-conv1d/build/temp.linux-x86_64-cpython-38/csrc/causal_conv1d_fwd.o	8d9f4bee818254b2
+0	10990	1739768992799927079	/home/changmin/ReMOTION/PRVMamba/causal-conv1d/build/temp.linux-x86_64-cpython-38/csrc/causal_conv1d.o	46a258c02c5ad8cb
+1	18313	1739769000095883175	/home/changmin/ReMOTION/PRVMamba/causal-conv1d/build/temp.linux-x86_64-cpython-38/csrc/causal_conv1d_bwd.o	1e34e3d282c476ca
+15	10538	1739770574100765857	/home/changmin/ReMOTION/PRVMamba/causal-conv1d/build/temp.linux-x86_64-cpython-38/csrc/causal_conv1d.o	46a258c02c5ad8cb

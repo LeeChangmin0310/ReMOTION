@@ -1,0 +1,12 @@
+# ninja log v5
+1	12397	1739769047983595025	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan.o	6be5c16d580cc80f
+2	41514	1739769077059420075	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_fwd_fp16.o	ae848e74cf292ec2
+2	41858	1739769077407417982	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_fwd_fp32.o	3cff91b4ac109c71
+2	42683	1739769078223413073	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_fwd_bf16.o	f3ccec8b3aad11db
+2	76174	1739769111719211533	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_fp32_real.o	a4c4ba6c921303eb
+1	76771	1739769112311207971	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_fp16_real.o	80e544dfcb071ffd
+1	79630	1739769115167190786	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_bf16_real.o	1b91fff93f6995c
+2	104455	1739769139975041525	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_fp32_complex.o	546f7ec12ed49a3a
+1	104819	1739769140343039311	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_fp16_complex.o	38bb9e43af7d30fc
+1	105070	1739769140587037843	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan_bwd_bf16_complex.o	a1835c948e68ec37
+12	10544	1739770649015860974	/home/changmin/ReMOTION/PRVMamba/mamba/build/temp.linux-x86_64-cpython-38/csrc/selective_scan/selective_scan.o	6be5c16d580cc80f

@@ -72,7 +72,7 @@ class CDC_T(nn.Module):
                 return out_normal
     
 class MambaLayer(nn.Module):
-    def __init__(self, dim, d_state = 16, d_conv = 4, expand = 2, channel_token = False):
+    def __init__(self, dim, d_state = 16, d_conv = 4, expand = 2, channel_token = False, bimamba = True):
         super(MambaLayer, self).__init__()
         self.dim = dim
         self.norm1 = nn.LayerNorm(dim)
@@ -83,9 +83,8 @@ class MambaLayer(nn.Module):
                 d_state=d_state,  # SSM state expansion factor
                 d_conv=d_conv,    # Local convolution width
                 expand=expand,    # Block expansion factor
-                # bimamba=True       
+                bimamba=bimamba,  # BiMamba       
         )
-        self.mamba.bimamba = True
         self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
         self.apply(self._init_weights)
 
