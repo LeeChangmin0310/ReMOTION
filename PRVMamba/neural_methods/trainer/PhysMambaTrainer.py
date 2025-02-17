@@ -193,7 +193,7 @@ class PhysMambaTrainer(BaseTrainer):
                 labels = valid_batch[1].float().to(self.device)
                 if self.prv_mode:
                     gt_prv = valid_batch[4].float().to(self.device)
-                    pred_ppg = self.model(data)[0]
+                    pred_ppg = self.model(data)[0]f
                     pred_ppg_norm = self.normalize_signal(pred_ppg)
                     labels_norm = self.normalize_signal(labels)
                     loss_ppg = self.criterion_Pearson(pred_ppg_norm, labels_norm)
