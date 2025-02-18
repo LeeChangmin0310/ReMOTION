@@ -27,8 +27,10 @@ def calculate_lf_hf(rr_intervals, fs=30):
                           np.arange(0, len(rr_intervals)), rr_intervals)
     freqs = np.fft.rfftfreq(len(rr_signal), 1/fs)
     psd = np.abs(np.fft.rfft(rr_signal))**2
+    
     lf_range = (0.04, 0.15)
     hf_range = (0.15, 0.4)
+    
     lf = simps(psd[(freqs >= lf_range[0]) & (freqs <= lf_range[1])],
                freqs[(freqs >= lf_range[0]) & (freqs <= lf_range[1])])
     hf = simps(psd[(freqs >= hf_range[0]) & (freqs <= hf_range[1])],
