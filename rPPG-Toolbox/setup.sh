@@ -11,10 +11,10 @@ MODE=$1
 # Function to set up using conda
 conda_setup() {
     echo "Setting up using conda..."
-    conda remove --name rppg-toolbox --all -y || exit 1
-    conda create -n rppg-toolbox python=3.8 -y || exit 1
+    conda remove --name rppg --all -y || exit 1
+    conda create -n rppg python=3.8 -y || exit 1
     source "$(conda info --base)/etc/profile.d/conda.sh" || exit 1
-    conda activate rppg-toolbox || exit 1
+    conda activate rppg || exit 1
     pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 --index-url https://download.pytorch.org/whl/cu121
     pip install -r requirements.txt || exit 1
     pip install -e ./tools/mamba || exit 1

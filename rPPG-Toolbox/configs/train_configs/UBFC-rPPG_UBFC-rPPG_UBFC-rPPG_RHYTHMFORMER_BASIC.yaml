@@ -5,7 +5,7 @@ TRAIN:
   EPOCHS: 30
   LR: 9e-3
   MODEL_FILE_NAME: UBFC_PURE_RhythmFormer
-  AUG: 1
+  # AUG: 1
   DATA:
     FS: 30
     DATASET: UBFC-rPPG
@@ -64,7 +64,7 @@ TEST:
   USE_LAST_EPOCH: False                      # to use provided validation dataset to find the best epoch, should be false
   DATA:
     FS: 30
-    DATASET: PURE
+    DATASET: UBFC-rPPG
     DO_PREPROCESS: True                 # if first time, should be true
     DATA_FORMAT: NDCHW
     DATA_PATH: "/home/changmin/data/UBFC-rPPG/DATASET_2"                     # Raw dataset path, need to be updated
